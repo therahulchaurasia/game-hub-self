@@ -25,7 +25,7 @@ const SidePanel = () => {
       <List>
         {data.map((genre, idx) => {
           return (
-            <ListItem key={idx} paddingY={1}>
+            <ListItem key={idx} paddingY={1} paddingRight={5}>
               <HStack>
                 <Image
                   boxSize="32px"
