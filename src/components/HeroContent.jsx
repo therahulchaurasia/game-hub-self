@@ -20,6 +20,7 @@ import { Grid, GridItem, Show } from "@chakra-ui/react"
 import imageCrop from "../services/image-crop"
 import { SimpleGrid } from "@chakra-ui/react"
 import PlatformIconList from "./PlatformIconList"
+import NameAndEmoji from "./NameAndEmoji"
 
 const HeroContent = ({ records }) => {
   console.log(records)
@@ -49,11 +50,11 @@ const HeroContent = ({ records }) => {
                     parentPlatforms={record.parent_platforms}
                     metacritic={record.metacritic}
                   />
-                  <Text fontSize="2xl" fontWeight="700">
-                    {record.name}
-                  </Text>
+                  <NameAndEmoji
+                    gameName={record.name}
+                    rating={record.rating_top}
+                  />
                 </CardBody>
-                <CardFooter>Another Icon</CardFooter>
               </Card>
             </GridItem>
           )
