@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   HStack,
   Heading,
@@ -33,11 +34,15 @@ const HeroContent = ({ records }) => {
         <PlatformSelector />
         <OrderBySelector />
       </HStack>
-      <SimpleGrid columns={4} spacing={5}>
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 2, xl: 3, "2xl": 4 }}
+        padding="10px"
+        spacing={6}
+      >
         {records?.map((record) => {
           return (
-            <GridItem w="100%" key={record.id}>
-              <Card maxW="sm">
+            <Box borderRadius={10} overflow="hidden">
+              <Card>
                 <Image
                   borderRadius="10px 10px 0 0"
                   objectFit="cover"
@@ -56,7 +61,7 @@ const HeroContent = ({ records }) => {
                   />
                 </CardBody>
               </Card>
-            </GridItem>
+            </Box>
           )
         })}
       </SimpleGrid>
