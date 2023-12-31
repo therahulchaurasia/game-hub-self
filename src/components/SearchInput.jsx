@@ -1,13 +1,18 @@
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react"
 import React, { useRef } from "react"
 import { BsSearch } from "react-icons/bs"
+import handleObjChange from "../services/setter"
 
-const SearchInput = () => {
+const SearchInput = ({ params, setParams }) => {
   const ref = useRef(null)
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault()
+        if (ref.current) {
+          let target = ref.current.value
+          handleObjChange(setParams, "search", target)
+        }
       }}
     >
       <InputGroup>

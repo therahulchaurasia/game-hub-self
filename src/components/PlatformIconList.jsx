@@ -29,16 +29,17 @@ const PlatformIconList = ({ parentPlatforms, metacritic }) => {
     <>
       <Flex marginBottom={3}>
         <HStack spacing={2}>
-          {parentPlatforms.map((platformsTree) => {
-            const { platform } = platformsTree
-            return (
-              <Icon
-                key={platform.id}
-                as={iconsMap[platform.slug]}
-                color="gray.500"
-              />
-            )
-          })}
+          {parentPlatforms &&
+            parentPlatforms.map((platformsTree) => {
+              const { platform } = platformsTree
+              return (
+                <Icon
+                  key={platform.id}
+                  as={iconsMap[platform.slug]}
+                  color="gray.500"
+                />
+              )
+            })}
         </HStack>
         <Spacer />
         <Badge colorScheme="green" fontWeight="700" paddingX={2}>

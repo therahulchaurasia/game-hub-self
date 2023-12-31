@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react"
 import React from "react"
 import { MdKeyboardArrowDown } from "react-icons/md"
+import handleObjChange from "../services/setter"
 
 const sortOrders = [
   { value: "", label: "Relevance" },
@@ -18,18 +19,27 @@ const sortOrders = [
   { value: "-rating", label: "Average rating" },
 ]
 
-const OrderBySelector = () => {
+const OrderBySelector = ({ params, setParams }) => {
   return (
     <>
       <HStack>
         <Menu>
           <MenuButton as={Button} rightIcon={<MdKeyboardArrowDown />}>
-            Order by: {"Relevance"}
+            Order by:{" "}
+            {params.ordering
+              ? sortOrders.find((rec) => rec.value === params.ordering).label
+              : "Relevance"}
           </MenuButton>
           <MenuList>
             {sortOrders.map((sortValues, idx) => {
               return (
-                <MenuItem key={idx} value={sortValues.value}>
+                <MenuItem
+                  key={idx}
+                  value={sortValues.value}
+                  onClick={() => {
+                    handleObjChange(setParams, "ordering", sortValues.value)
+                  }}
+                >
                   {sortValues.label}
                 </MenuItem>
               )

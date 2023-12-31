@@ -13,7 +13,9 @@ import {
 } from "@chakra-ui/react"
 import { Text } from "@chakra-ui/react"
 import noImage from "../assets/no-image-placeholder.webp"
-const SidePanel = () => {
+import handleObjChange from "../services/setter"
+
+const SidePanel = ({ params, setParams }) => {
   const { data, isLoading, error } = useGenres()
   if (error) return
   if (isLoading) return <Spinner />
@@ -39,7 +41,10 @@ const SidePanel = () => {
                   textAlign="left"
                   fontSize="md"
                   variant="link"
-                  fontWeight="normal"
+                  fontWeight={params.genres === genre.slug ? "bold" : "normal"}
+                  onClick={() => {
+                    handleObjChange(setParams, "genres", genre.slug)
+                  }}
                 >
                   {genre.name}
                 </Button>
