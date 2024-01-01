@@ -3,6 +3,7 @@ import axios from "axios"
 // For more info on using .env with react check out this stack overflow article: https://stackoverflow.com/questions/48699820/how-do-i-hide-an-api-key-in-create-react-app
 const apiClient = axios.create({
   baseURL: "https://api.rawg.io/api/",
+  headers: [(axios.defaults.headers.get["Access-Control-Allow-Origin"] = "*")],
   params: {
     key: import.meta.env.VITE_API_KEY,
   },
